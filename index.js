@@ -5,11 +5,13 @@ document.querySelectorAll(".drum")[i].addEventListener("click", drumClick);
 function drumClick() {
 var buttonInnerHTML = this.innerHTML;
 keyCheck(buttonInnerHTML);
+buttonAnimation(buttonInnerHTML);
 }
 
 document.addEventListener("keydown", keyPress);
 function keyPress(e) {
   keyCheck(e.key);
+  buttonAnimation(event.key);
 }
 function keyCheck(e){
 
@@ -52,3 +54,15 @@ switch (e) {
   default:
   }
  }
+
+ function buttonAnimation(currentkey) {
+
+   var activeButton = document.querySelector("." + currentkey);
+
+   activeButton.classList.add("pressed");
+
+   setTimeout(function(){
+     activeButton.classList.remove("pressed");
+   }, 100);
+}
+
